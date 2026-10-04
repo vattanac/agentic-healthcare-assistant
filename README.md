@@ -75,3 +75,4 @@ cache of trusted-source summaries for common conditions, so the feature always w
 
 This is an administrative assistant that provides general, trusted-source information — not
 personal medical advice or diagnosis. Patient data is fictional and for demonstration only.
+# agentic-healthcare-assistant
