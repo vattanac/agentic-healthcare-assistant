@@ -20,5 +20,16 @@
     "slot": "2026-10-09 15:00",
     "status": "confirmed",
     "booked_at": "2026-10-05 09:00"
+  },
+  {
+    "appointment_id": "A003",
+    "patient_id": "P001",
+    "patient_name": "Sokha Chan",
+    "doctor_id": "D003",
+    "doctor_name": "Dr. Anita Rao",
+    "specialty": "Nephrologist",
+    "slot": "2026-10-06 10:00",
+    "status": "confirmed",
+    "booked_at": "2026-10-04 14:22"
   }
 ]

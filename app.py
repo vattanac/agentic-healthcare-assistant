@@ -43,17 +43,29 @@ def get_agent(model: str):
 with st.sidebar:
     st.title("🏥 Healthcare Assistant")
     st.caption("Agentic AI for medical task automation")
-    model = st.selectbox("LLM model", ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash"], index=0)
+    model = st.selectbox("Agent LLM (Groq)",
+                         ["openai/gpt-oss-20b", "openai/gpt-oss-120b", "qwen/qwen3.8-27b"], index=0)
 
-    key_present = bool(os.environ.get("GOOGLE_API_KEY"))
-    if key_present:
-        st.success("GOOGLE_API_KEY detected.")
+    # Agent runs on Groq (tool-calling); embeddings run on Google Gemini.
+    groq_ok = bool(os.environ.get("GROQ_API_KEY"))
+    google_ok = bool(os.environ.get("GOOGLE_API_KEY"))
+    if groq_ok:
+        st.success("GROQ_API_KEY detected (agent).")
     else:
-        st.warning("Set GOOGLE_API_KEY (env or .env).")
-        manual = st.text_input("…or paste your API key", type="password")
-        if manual:
-            os.environ["GOOGLE_API_KEY"] = manual
-            key_present = True
+        st.warning("Set GROQ_API_KEY — free at console.groq.com/keys")
+        gk = st.text_input("…or paste your Groq API key", type="password")
+        if gk:
+            os.environ["GROQ_API_KEY"] = gk
+            groq_ok = True
+    if google_ok:
+        st.success("GOOGLE_API_KEY detected (embeddings).")
+    else:
+        st.warning("Set GOOGLE_API_KEY — free at aistudio.google.com/apikey")
+        gok = st.text_input("…or paste your Google API key", type="password")
+        if gok:
+            os.environ["GOOGLE_API_KEY"] = gok
+            google_ok = True
+    key_present = groq_ok and google_ok
 
     st.divider()
     if st.button("🗑️ Reset conversation & logs", use_container_width=True):
@@ -99,7 +111,7 @@ with tabs[0]:
             st.session_state["pending"] = sample
 
     if not key_present:
-        st.info("Add your Google API key in the sidebar to use the assistant.")
+        st.info("Add your Groq + Google API keys in the sidebar to use the assistant.")
     else:
         agent, memory = get_agent(model)
         if "chat" not in st.session_state:
@@ -226,7 +238,7 @@ with tabs[4]:
     with ceval:
         st.markdown("**Summary / search accuracy**")
         if not key_present:
-            st.info("Add your Google API key to run evaluation.")
+            st.info("Add your Groq + Google API keys to run evaluation.")
         elif st.button("Run QAEvalChain evaluation"):
             with st.spinner("Grading answers…"):
                 graded, preds = hc.evaluate_summaries()

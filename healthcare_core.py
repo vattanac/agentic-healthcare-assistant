@@ -18,7 +18,9 @@ It provides, mapped to the capstone steps:
        Performance monitoring                 -> tool-usage logging + performance_metrics()
     7/8. Data/UI + memory & logs              -> data accessors used by app.py
 
-LLM backend: Google Gemini (set GOOGLE_API_KEY; a .env file is supported).
+LLM backend: the agent runs on Groq (Llama 3.3; set GROQ_API_KEY) for reliable
+tool-calling, and patient-summary embeddings use Google Gemini (set GOOGLE_API_KEY).
+Both keys are free; a .env file is supported.
 The medical-information search uses the live MedlinePlus (NLM) web service with an
 offline fallback so it still works without internet (e.g. during grading).
 """
@@ -256,7 +258,7 @@ def build_patient_vectorstore(embeddings=None):
     from langchain_community.vectorstores import FAISS
     if embeddings is None:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
     docs = [Document(page_content=patient_summary_text(p),
                      metadata={"patient_id": p["patient_id"], "name": p["name"]})
             for p in get_patients()]
@@ -441,19 +443,22 @@ SAFETY: You provide administrative help and general, trusted-source medical info
 """
 
 
-def build_agent(model: str = "gemini-2.5-flash", temperature: float = 0.0,
+def build_agent(model: str = "openai/gpt-oss-20b", temperature: float = 0.0,
                 with_vectorstore: bool = True, verbose: bool = False):
-    """Build the tool-calling agent with memory. Requires GOOGLE_API_KEY.
+    """Build the tool-calling agent with memory.
+
+    The agent LLM runs on Groq (requires GROQ_API_KEY); the patient vector store
+    uses Google Gemini embeddings (requires GOOGLE_API_KEY).
 
     Returns (agent_executor, memory)."""
-    from langchain_google_genai import ChatGoogleGenerativeAI
+    from langchain_groq import ChatGroq
     from langchain.agents import create_tool_calling_agent, AgentExecutor
     from langchain.memory import ConversationBufferMemory
 
     if with_vectorstore and _PATIENT_VS is None:
         build_patient_vectorstore()
 
-    llm = ChatGoogleGenerativeAI(model=model, temperature=temperature)
+    llm = ChatGroq(model=model, temperature=temperature)
     prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT),
         MessagesPlaceholder("chat_history", optional=True),
@@ -519,8 +524,8 @@ def evaluate_summaries(llm=None, examples=None):
     """Grade answers with QAEvalChain. Returns (graded, predictions)."""
     from langchain.evaluation.qa import QAEvalChain
     if llm is None:
-        from langchain_google_genai import ChatGoogleGenerativeAI
-        llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.0)
+        from langchain_groq import ChatGroq
+        llm = ChatGroq(model="openai/gpt-oss-20b", temperature=0.0)
     if examples is None:
         examples = default_eval_examples()
     predictions = [{"result": answer_with_tools(ex["query"])} for ex in examples]

@@ -7,7 +7,7 @@ administration. It plans multi-step requests and uses tools to **book appointmen
 **manage patient records**, **retrieve & summarize medical histories**, and **search
 trusted medical sources** (MedlinePlus / WHO). Built with a **LangChain tool-calling
 agent**, a **FAISS** patient knowledge base (RAG), **conversation memory**, and an
-free **Google Gemini** LLM.
+a free **Groq (Llama 3.3)** LLM for the agent and **Google Gemini** embeddings for the patient knowledge base.
 
 ## Files
 
@@ -48,7 +48,7 @@ Run from inside this folder, in a terminal.
 ```bash
 python3 -m venv .venv && source .venv/bin/activate   # optional
 pip install -r requirements.txt
-cp .env.example .env        # then edit .env and set GOOGLE_API_KEY (free: https://aistudio.google.com/apikey)
+cp .env.example .env        # then set GROQ_API_KEY (console.groq.com/keys) and GOOGLE_API_KEY (aistudio.google.com/apikey) — both free
 ```
 
 ## Run the notebook
@@ -75,4 +75,3 @@ cache of trusted-source summaries for common conditions, so the feature always w
 
 This is an administrative assistant that provides general, trusted-source information — not
 personal medical advice or diagnosis. Patient data is fictional and for demonstration only.
-# agentic-healthcare-assistant
