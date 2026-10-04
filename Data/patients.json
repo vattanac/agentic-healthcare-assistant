@@ -1,0 +1,204 @@
+[
+  {
+    "patient_id": "P001",
+    "name": "Sokha Chan",
+    "age": 70,
+    "gender": "Male",
+    "conditions": [
+      "Chronic Kidney Disease (Stage 3)",
+      "Hypertension"
+    ],
+    "structured_history": [
+      {
+        "date": "2021-03-12",
+        "type": "diagnosis",
+        "detail": "Chronic Kidney Disease, Stage 3a (eGFR 52)"
+      },
+      {
+        "date": "2021-03-12",
+        "type": "diagnosis",
+        "detail": "Essential hypertension"
+      },
+      {
+        "date": "2022-06-01",
+        "type": "treatment",
+        "detail": "Started ACE inhibitor (ramipril) for renal protection"
+      },
+      {
+        "date": "2024-01-20",
+        "type": "lab",
+        "detail": "eGFR 45, creatinine 1.7 mg/dL, declining renal function"
+      },
+      {
+        "date": "2025-09-10",
+        "type": "treatment",
+        "detail": "Dietary sodium & protein restriction advised"
+      }
+    ],
+    "medications": [
+      "Ramipril 5mg daily",
+      "Amlodipine 5mg daily"
+    ],
+    "alerts": [
+      "Allergy: Penicillin",
+      "Avoid NSAIDs (nephrotoxic)"
+    ],
+    "notes": "70-year-old male with progressive CKD and long-standing hypertension. Son is primary caregiver. Needs nephrology follow-up for disease staging and review of latest treatment options. Reports mild fatigue and ankle swelling."
+  },
+  {
+    "patient_id": "P002",
+    "name": "Maria Santos",
+    "age": 54,
+    "gender": "Female",
+    "conditions": [
+      "Type 2 Diabetes",
+      "Hyperlipidemia"
+    ],
+    "structured_history": [
+      {
+        "date": "2019-08-05",
+        "type": "diagnosis",
+        "detail": "Type 2 Diabetes Mellitus (HbA1c 8.1%)"
+      },
+      {
+        "date": "2020-02-14",
+        "type": "treatment",
+        "detail": "Metformin initiated"
+      },
+      {
+        "date": "2023-11-02",
+        "type": "lab",
+        "detail": "HbA1c 7.2%, improved glycemic control"
+      }
+    ],
+    "medications": [
+      "Metformin 1000mg twice daily",
+      "Atorvastatin 20mg daily"
+    ],
+    "alerts": [
+      "Allergy: Sulfa drugs"
+    ],
+    "notes": "Middle-aged female with reasonably controlled T2DM. Due for annual retinal screening and foot exam. Interested in GLP-1 options."
+  },
+  {
+    "patient_id": "P003",
+    "name": "John Carter",
+    "age": 63,
+    "gender": "Male",
+    "conditions": [
+      "Coronary Artery Disease",
+      "Hypertension"
+    ],
+    "structured_history": [
+      {
+        "date": "2018-05-22",
+        "type": "diagnosis",
+        "detail": "Coronary artery disease, post-MI"
+      },
+      {
+        "date": "2018-05-25",
+        "type": "treatment",
+        "detail": "PCI with drug-eluting stent to LAD"
+      },
+      {
+        "date": "2022-10-11",
+        "type": "treatment",
+        "detail": "Cardiac rehab completed"
+      }
+    ],
+    "medications": [
+      "Aspirin 81mg daily",
+      "Metoprolol 50mg twice daily",
+      "Rosuvastatin 10mg daily"
+    ],
+    "alerts": [
+      "Prior MI - monitor chest symptoms"
+    ],
+    "notes": "Stable CAD post-PCI. Needs cardiology review and lipid re-check."
+  },
+  {
+    "patient_id": "P004",
+    "name": "Aisha Rahman",
+    "age": 34,
+    "gender": "Female",
+    "conditions": [
+      "Asthma"
+    ],
+    "structured_history": [
+      {
+        "date": "2015-04-18",
+        "type": "diagnosis",
+        "detail": "Moderate persistent asthma"
+      },
+      {
+        "date": "2023-07-09",
+        "type": "treatment",
+        "detail": "Switched to combination ICS/LABA inhaler"
+      }
+    ],
+    "medications": [
+      "Budesonide/Formoterol inhaler"
+    ],
+    "alerts": [
+      "Trigger: pollen, dust mites"
+    ],
+    "notes": "Young adult with well-controlled asthma. Occasional seasonal flares."
+  },
+  {
+    "patient_id": "P005",
+    "name": "Robert Nguyen",
+    "age": 48,
+    "gender": "Male",
+    "conditions": [
+      "Chronic Kidney Disease (Stage 2)",
+      "Type 2 Diabetes"
+    ],
+    "structured_history": [
+      {
+        "date": "2020-09-30",
+        "type": "diagnosis",
+        "detail": "Diabetic nephropathy, CKD Stage 2"
+      },
+      {
+        "date": "2021-01-15",
+        "type": "treatment",
+        "detail": "SGLT2 inhibitor added for renal protection"
+      }
+    ],
+    "medications": [
+      "Dapagliflozin 10mg daily",
+      "Metformin 500mg twice daily"
+    ],
+    "alerts": [
+      "Monitor renal function quarterly"
+    ],
+    "notes": "Diabetic with early CKD. Good candidate for nephrology co-management."
+  },
+  {
+    "patient_id": "P006",
+    "name": "Grace Mwangi",
+    "age": 59,
+    "gender": "Female",
+    "conditions": [
+      "Hypothyroidism",
+      "Osteoarthritis"
+    ],
+    "structured_history": [
+      {
+        "date": "2017-12-01",
+        "type": "diagnosis",
+        "detail": "Primary hypothyroidism"
+      },
+      {
+        "date": "2022-03-19",
+        "type": "diagnosis",
+        "detail": "Knee osteoarthritis, bilateral"
+      }
+    ],
+    "medications": [
+      "Levothyroxine 75mcg daily"
+    ],
+    "alerts": [],
+    "notes": "Stable hypothyroidism on replacement. Knee pain managed conservatively."
+  }
+]

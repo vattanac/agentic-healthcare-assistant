@@ -1,0 +1,15 @@
+# Agentic Healthcare Assistant - Course-End Project 2
+# Python 3.10+ recommended
+
+langchain>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-core>=0.3.85,<1.0
+langchain-google-genai==2.0.11
+faiss-cpu>=1.7
+
+pandas>=2.0
+matplotlib>=3.7
+seaborn>=0.12
+
+streamlit>=1.30
+python-dotenv>=1.0

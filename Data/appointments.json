@@ -1,0 +1,24 @@
+[
+  {
+    "appointment_id": "A001",
+    "patient_id": "P003",
+    "patient_name": "John Carter",
+    "doctor_id": "D005",
+    "doctor_name": "Dr. Elena Varga",
+    "specialty": "Cardiologist",
+    "slot": "2026-10-07 10:00",
+    "status": "confirmed",
+    "booked_at": "2026-10-05 09:00"
+  },
+  {
+    "appointment_id": "A002",
+    "patient_id": "P002",
+    "patient_name": "Maria Santos",
+    "doctor_id": "D007",
+    "doctor_name": "Dr. Priya Nair",
+    "specialty": "Endocrinologist",
+    "slot": "2026-10-09 15:00",
+    "status": "confirmed",
+    "booked_at": "2026-10-05 09:00"
+  }
+]
